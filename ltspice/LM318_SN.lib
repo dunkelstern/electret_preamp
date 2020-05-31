@@ -1,0 +1,411 @@
+* LM318 Op Amp Model
+* Version: 004 
+* Date: 11/28/2018
+* Author: Shtybel Nazar
+* E-mail: nazar@s-audio.systems
+*
+* LM318NS_SN - National Semiconductor
+* LM318TI_SN - Texas Instruments
+* LT318A_SN - Linear Technology
+* 
+* The following parameters are modeled:
+* 1. Open loop gain and phase with RL and CL effects
+* 2. AC/DC Common mode rejection ratio
+* 3. AC/DC Power supply rejection ratio
+* 4. Slew rate
+* 5. Input voltage noise with 1/f
+* 6. Input curent noise with 1/f
+* 7. Input bias current with common mode and temperature effects
+* 8. Input offset current with temperature effects
+* 9. Input offset voltage with temperature effects
+* 10. Input impedance
+* 11. Output current through the supply rails
+* 12. Output current limit with temperature effects 
+* 13. Output voltage swing from rails with RL effects
+* 14. Output impedance
+* 15. Quiescent current vs Supply voltage with temperature effects
+* 16. Maximum supply voltage breakdown
+* 17. Overload recovery / No phase reversal
+* 18. Input common mode voltage range
+*
+* Connections:
+*                Non-Inverting Input
+*                | Inverting Input
+*                | | +Supply Voltage
+*                | | | -Supply Voltage
+*                | | | | Output
+*                | | | | | 
+.SUBCKT LM318NS_SN 1 2 3 4 5
+
+D1 8 10 DX
+D3 7 10 DX
+D2 9 8 DX
+D4 9 7 DX
+E4 7 19 17 0 1
+R9 16 15 1
+R7 11 12 1
+R8 13 11 1
+G3 0 15 11 14 0.00001
+L1 16 0 17.5u
+E1 12 0 1 0 1
+E2 13 0 2 0 1
+E5 19 22 21 0 1
+R13 0 21 8.5k
+E3 14 4 3 4 0.5
+R10 0 16 0.55k
+C2 0 2 3p
+C1 1 0 3p
+C3 1 2 1.1p
+E6 22 25 26 0 1
+G2 2 0 6 0 0.8
+R4 6 0 1E-6 TC=-2e-3
+I1 0 6 0.15
+G1 1 0 6 0 1
+R2 1 2 3Meg
+R1 0 1 200Meg
+R3 2 0 200Meg
+R24 39 0 1
+C4 39 0 95E-5
+G10 0 39 36 0 1
+G9 0 36 30 8 200000
+R23 36 0 1
+D9 36 37 DX
+D11 38 36 DX
+G16 49 3 3 42 0.01
+G17 4 49 42 4 0.01
+R32 3 49 100
+R33 49 4 100
+R34 56 49 1
+G15 48 4 42 49 0.01
+G14 47 4 49 42 0.01
+D17 3 48 DX
+D15 3 47 DX
+D16 4 47 DY
+D18 4 48 DY
+D19 49 54 DX
+E13 54 3 51 49 1000
+V7 50 51 0.8
+D20 55 49 DX
+E14 55 4 53 49 1000
+V8 53 52 1.5
+E11 3 50 49 56 65
+G11 0 40 39 0 1
+R25 40 0 1
+C5 57 0 2.6525E-7
+V3 20 0 0.235
+D5 20 21 DN
+R30 47 0 1G
+R31 48 0 1G
+R20 0 34 0.0000025
+V5 33 0 0.235
+D7 33 34 DNC
+G7 0 2 34 0 1
+R19 0 32 0.0000025
+V4 31 0 0.235
+D6 31 32 DNC
+G6 0 1 32 0 1
+G12 0 41 40 0 1
+R26 41 0 1
+C6 41 0 2200p
+C8 49 42 1p
+D13 42 43 DX
+E9 43 0 45 42 1000
+D14 44 42 DX
+E10 44 0 46 42 1000
+R21 3 4 77k
+D8 4 3 DB
+G8 3 4 35 0 1
+R22 0 35 1 TC=-1e-3
+I3 0 35 0.0048
+E8 25 30 29 0 1
+R18 0 29 1 TC=-2e-3
+I2 29 0 0.0061
+L5 56 5 150n
+E12 4 52 49 56 65
+G4 0 23 3 4 0.00007
+R14 24 23 1
+L3 24 0 250u
+R15 0 24 10k
+G5 0 26 23 0 1
+R16 27 26 1
+L4 27 0 0.5u
+R17 0 27 5
+R28 49 45 1 TC=-3.4e-3
+I4 49 45 1.05
+R29 49 46 1 TC=-3.4e-3
+I5 46 49 1.05
+G13 0 42 41 0 1
+R27 42 0 1
+C7 42 0 2200p
+R5 7 1 50
+R6 8 2 50
+V2 3 10 2.5
+V1 9 4 4
+R11 18 17 1
+G18 0 17 15 0 1
+L2 18 0 2.6u
+R12 0 18 43
+R36 40 57 1
+D10 0 37 DSRP
+D12 38 0 DSRN
+
+.model DX D(IS=1E-15)
+.model DY D(IS=1E-15 BV=50)
+.model DN D(KF=400e-14 T_ABS=27)
+.model DNC D(KF=200e-4 T_ABS=27)
+.model DB D(BV=46 T_ABS=27)
+.model DSRP D(BV=185K T_ABS=27)
+.model DSRN D(BV=135K T_ABS=27)
+
+.ENDS LM318NS_SN
+
+
+.SUBCKT LM318TI_SN 1 2 3 4 5
+
+D1 8 10 DX
+D3 7 10 DX
+D2 9 8 DX
+D4 9 7 DX
+E4 7 19 17 0 1
+R9 16 15 1
+R7 11 12 1
+R8 13 11 1
+G3 0 15 11 14 0.00001
+L1 16 0 58u
+E1 12 0 1 0 1
+E2 13 0 2 0 1
+E5 19 22 21 0 1
+R13 0 21 8.5k
+E3 14 4 3 4 0.5
+R10 0 16 10k
+C2 0 2 3p
+C1 1 0 3p
+C3 1 2 1.1p
+E6 22 25 26 0 1
+G2 2 0 6 0 0.8
+R4 6 0 1E-6 TC=-2e-3
+I1 0 6 0.15
+G1 1 0 6 0 1
+R2 1 2 3Meg
+R1 0 1 200Meg
+R3 2 0 200Meg
+R24 39 0 1
+C4 39 0 82E-5
+G10 0 39 36 0 1
+G9 0 36 30 8 200000
+R23 36 0 1
+D9 36 37 DX
+D11 38 36 DX
+G16 49 3 3 42 0.008
+G17 4 49 42 4 0.008
+R32 3 49 125
+R33 49 4 125
+R34 56 49 1
+G15 48 4 42 49 0.01
+G14 47 4 49 42 0.01
+D17 3 48 DX
+D15 3 47 DX
+D16 4 47 DY
+D18 4 48 DY
+D19 49 54 DX
+E13 54 3 51 49 1000
+V7 50 51 0.8
+D20 55 49 DX
+E14 55 4 53 49 1000
+V8 53 52 1.5
+E11 3 50 49 56 65
+G11 0 40 39 0 1
+R25 40 0 1
+C5 57 0 1.25E-7
+V3 20 0 0.235
+D5 20 21 DN
+R30 47 0 1G
+R31 48 0 1G
+R20 0 34 0.0000025
+V5 33 0 0.235
+D7 33 34 DNC
+G7 0 2 34 0 1
+R19 0 32 0.0000025
+V4 31 0 0.235
+D6 31 32 DNC
+G6 0 1 32 0 1
+G12 0 41 40 0 1
+R26 41 0 1
+C6 41 0 150p
+C8 49 42 1p
+D13 42 43 DX
+E9 43 0 45 42 1000
+D14 44 42 DX
+E10 44 0 46 42 1000
+R21 3 4 77k
+D8 4 3 DB
+G8 3 4 35 0 1
+R22 0 35 1 TC=-1e-3
+I3 0 35 0.0048
+E8 25 30 29 0 1
+R18 0 29 1 TC=-2e-3
+I2 29 0 0.0055
+L5 56 5 150n
+E12 4 52 49 56 65
+G4 0 23 3 4 0.00007
+R14 24 23 1
+L3 24 0 250u
+R15 0 24 10k
+G5 0 26 23 0 1
+R16 27 26 1
+L4 27 0 0.5u
+R17 0 27 5
+R28 49 45 1 TC=-3.4e-3
+I4 49 45 1.05
+R29 49 46 1 TC=-3.4e-3
+I5 46 49 1.05
+G13 0 42 41 0 1
+R27 42 0 1
+C7 42 0 150p
+R5 7 1 50
+R6 8 2 50
+V2 3 10 2.5
+V1 9 4 4
+R11 18 17 1
+G18 0 17 15 0 1
+L2 18 0 0.45u
+R12 0 18 5.5
+R36 40 57 0.5
+D10 0 37 DSRP
+D12 38 0 DSRN
+
+.model DX D(IS=1E-15)
+.model DY D(IS=1E-15 BV=50)
+.model DN D(KF=400e-14 T_ABS=27)
+.model DNC D(KF=200e-4 T_ABS=27)
+.model DB D(BV=46 T_ABS=27)
+.model DSRP D(BV=160K T_ABS=27)
+.model DSRN D(BV=115K T_ABS=27)
+
+.ENDS LM318TI_SN
+
+
+.SUBCKT LT318A_SN 1 2 3 4 5
+
+D1 8 10 DX
+D3 7 10 DX
+D2 9 8 DX
+D4 9 7 DX
+E4 7 19 17 0 1
+R9 16 15 1
+R7 11 12 1
+R8 13 11 1
+G3 0 15 11 14 0.00001
+L1 16 0 31u
+E1 12 0 1 0 1
+E2 13 0 2 0 1
+E5 19 22 21 0 1
+R13 0 21 8.5k
+E3 14 4 3 4 0.5
+R10 0 16 0.25k
+C2 0 2 3p
+C1 1 0 3p
+C3 1 2 1.1p
+E6 22 25 26 0 1
+G2 2 0 6 0 0.93
+R4 6 0 1E-6 TC=-2e-3
+I1 0 6 0.15
+G1 1 0 6 0 1
+R2 1 2 3Meg
+R1 0 1 200Meg
+R3 2 0 200Meg
+R24 39 0 1
+C4 39 0 182E-5
+G10 0 39 36 0 1
+G9 0 36 30 8 500000
+R23 36 0 1
+D9 36 37 DX
+D11 38 36 DX
+G16 49 3 3 42 0.01
+G17 4 49 42 4 0.01
+R32 3 49 100
+R33 49 4 100
+R34 56 49 1
+G15 48 4 42 49 0.01
+G14 47 4 49 42 0.01
+D17 3 48 DX
+D15 3 47 DX
+D16 4 47 DY
+D18 4 48 DY
+D19 49 54 DX
+E13 54 3 51 49 1000
+V7 50 51 0.8
+D20 55 49 DX
+E14 55 4 53 49 1000
+V8 53 52 1.5
+E11 3 50 49 56 65
+G11 0 40 39 0 1
+R25 40 0 1
+C5 57 0 6.5E-7
+V3 20 0 0.235
+D5 20 21 DN
+R30 47 0 1G
+R31 48 0 1G
+R20 0 34 0.0000025
+V5 33 0 0.235
+D7 33 34 DNC
+G7 0 2 34 0 1
+R19 0 32 0.0000025
+V4 31 0 0.235
+D6 31 32 DNC
+G6 0 1 32 0 1
+G12 0 41 40 0 1
+R26 41 0 1
+C6 41 0 4600p
+C8 49 42 1p
+D13 42 43 DX
+E9 43 0 45 42 1000
+D14 44 42 DX
+E10 44 0 46 42 1000
+R21 3 4 77k
+D8 4 3 DB
+G8 3 4 35 0 1
+R22 0 35 1 TC=-1e-3
+I3 0 35 0.0048
+E8 25 30 29 0 1
+R18 0 29 1 TC=-2e-3
+I2 29 0 0.0026
+L5 56 5 350n
+R35 56 5 30k
+E12 4 52 49 56 65
+G4 0 23 3 4 0.00007
+R14 24 23 1
+L3 24 0 250u
+R15 0 24 10k
+G5 0 26 23 0 1
+R16 27 26 1
+L4 27 0 0.5u
+R17 0 27 5
+R28 49 45 1 TC=-3.4e-3
+I4 49 45 1.05
+R29 49 46 1 TC=-3.4e-3
+I5 46 49 1.05
+G13 0 42 41 0 1
+R27 42 0 1
+C7 42 0 4600p
+R5 7 1 50
+R6 8 2 50
+V2 3 10 2.5
+V1 9 4 4
+R11 18 17 1
+G18 0 17 15 0 1
+L2 18 0 1u
+R12 0 18 30
+R36 40 57 0.43
+D10 0 37 DSRP
+D12 38 0 DSRN
+
+.model DX D(IS=1E-15)
+.model DY D(IS=1E-15 BV=50)
+.model DN D(KF=400e-14 T_ABS=27)
+.model DNC D(KF=200e-4 T_ABS=27)
+.model DB D(BV=46 T_ABS=27)
+.model DSRP D(BV=355K T_ABS=27)
+.model DSRN D(BV=260K T_ABS=27)
+
+.ENDS LT318A_SN
