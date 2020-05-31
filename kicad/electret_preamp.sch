@@ -235,15 +235,15 @@ F 3 "~" H 4050 4500 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:C C4
+L Device:CP C4
 U 1 1 5ED3F871
 P 4450 4500
-F 0 "C4" H 4335 4454 50  0000 R CNN
-F 1 "10u" H 4335 4545 50  0000 R CNN
+F 0 "C4" H 4700 4550 50  0000 R CNN
+F 1 "10u" H 4700 4450 50  0000 R CNN
 F 2 "Capacitor_SMD:CP_Elec_6.3x9.9" H 4488 4350 50  0001 C CNN
 F 3 "~" H 4450 4500 50  0001 C CNN
 	1    4450 4500
-	-1   0    0    1   
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	1150 2600 1150 2700
