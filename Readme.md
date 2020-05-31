@@ -13,12 +13,18 @@ play with all values and let the program re-calculate all relevant values to be 
 
 There are some areas that will be most important:
 
-1. Operating Voltage of the Preamp ![Operating Voltage](img/intro_vcc.png)
-2. Parameters of the Microphone capsule in use ![Microphone parameters](img/intro_mic.png)
-3. Acceptable high-frequency attenuation ![Acceptable Attenuation at high frequencies](img/intro_attenuation.png)
-4. Acceptable low-frequency cutoff in output highpass filter ![Output capacity](img/intro_highpass.png)
-5. The List of passive component values ![Passives](img/intro_passives.png)
-6. The Op-Amp parameters to look out for ![Op-Amp Parameters](img/intro_opamp.png)
+1. Operating Voltage of the Preamp
+  ![Operating Voltage](img/intro_vcc.png)
+2. Parameters of the Microphone capsule in use
+  ![Microphone parameters](img/intro_mic.png)
+3. Acceptable high-frequency attenuation
+  ![Acceptable Attenuation at high frequencies](img/intro_attenuation.png)
+4. Acceptable low-frequency cutoff in output highpass filter
+  ![Output capacity](img/intro_highpass.png)
+5. The List of passive component values
+  ![Passives](img/intro_passives.png)
+6. The Op-Amp parameters to look out for
+  ![Op-Amp Parameters](img/intro_opamp.png)
 
 ### LT Spice simulation
 
