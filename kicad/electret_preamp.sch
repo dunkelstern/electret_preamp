@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:electret_preamp-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -40,7 +41,7 @@ L Device:R R2
 U 1 1 5ED18038
 P 2400 1500
 F 0 "R2" V 2193 1500 50  0000 C CNN
-F 1 "270k" V 2284 1500 50  0000 C CNN
+F 1 "180k" V 2284 1500 50  0000 C CNN
 F 2 "Resistor_SMD:R_1210_3225Metric_Pad1.42x2.65mm_HandSolder" V 2330 1500 50  0001 C CNN
 F 3 "~" H 2400 1500 50  0001 C CNN
 	1    2400 1500
@@ -102,12 +103,12 @@ F 3 "~" H 2400 1100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C C6
+L Device:CP C6
 U 1 1 5ED1A83D
 P 1950 3100
 F 0 "C6" H 2065 3146 50  0000 L CNN
 F 1 "10u" H 2065 3055 50  0000 L CNN
-F 2 "" H 1988 2950 50  0001 C CNN
+F 2 "Capacitor_SMD:CP_Elec_4x5.8" H 1988 2950 50  0001 C CNN
 F 3 "~" H 1950 3100 50  0001 C CNN
 	1    1950 3100
 	1    0    0    -1  
@@ -386,7 +387,7 @@ F 1 "NE5532" H 2350 2326 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 2350 2050 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/ne5532.pdf" H 2350 2050 50  0001 C CNN
 	1    2350 2050
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 $Comp
 L Amplifier_Operational:NE5532 U1
