@@ -1,0 +1,5 @@
+*.raw
+*.log
+*-bak
+*.bak
+.ipynb_checkpoints
