@@ -50,7 +50,7 @@ Here are some bode-plots of the frequency response for some tested Op-Amps:
 
 ![Bode plot for OP07](img/bode_plot_op07.png)
 
-The OP07 is the worst possible of the bunch. The bad response is a product of the sub-optimal slew rate of ![0.3V/uS](https://render.githubusercontent.com/render/math?math=0.3\frac{V}{\mu S}).
+The OP07 is the worst possible of the bunch. The bad response is a product of the sub-optimal slew rate of ![0.3V per uS](https://render.githubusercontent.com/render/math?math=0.3%5Cfrac%7BV%7D%7B%5Cmu%20S%7D).
 Additionally this Op-Amp will add noise to the signal as it's input voltage noise is around ![10](https://render.githubusercontent.com/render/math?math=10\frac{nV}{\sqrt{Hz}}). Ideally
 it should be below ![6.6](https://render.githubusercontent.com/render/math?math=6.6\frac{nV}{\sqrt{Hz}}) as we can see in the calulations.
 
@@ -58,7 +58,7 @@ it should be below ![6.6](https://render.githubusercontent.com/render/math?math=
 
 ![Bode plot for TL072](img/bode_plot_tl072.png)
 
-The TL072 is a bit better than the OP07. The slew rate of ![16V/uS](https://render.githubusercontent.com/render/math?math=16\frac{V}{\mu S}) is at least enough.
+The TL072 is a bit better than the OP07. The slew rate of ![16V/uS](https://render.githubusercontent.com/render/math?math=16%5Cfrac%7BV%7D%7B%5Cmu%20S%7D) is at least enough.
 This Op-Amp will add a lot of noise to the signal as it's input voltage noise is around ![15](https://render.githubusercontent.com/render/math?math=15\frac{nV}{\sqrt{Hz}}). Ideally
 it should be below ![6.6](https://render.githubusercontent.com/render/math?math=6.6\frac{nV}{\sqrt{Hz}}) as we can see in the calulations.
 
